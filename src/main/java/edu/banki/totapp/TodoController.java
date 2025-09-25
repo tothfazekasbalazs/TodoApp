@@ -2,7 +2,6 @@ package edu.banki.totapp;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -23,12 +22,10 @@ public class TodoController {
     private HBox inputRow;
     @FXML
     private VBox bottomPanel;
-    @FXML
-    private BorderPane root;
 
     private ObservableList<String> todoItems = FXCollections.observableArrayList();
 
-    public BorderPane createPane() {
+    public VBox createPane() {
 
         todoListView = new ListView<>(todoItems);
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -42,18 +39,13 @@ public class TodoController {
 
         deleteButton = new Button("Kijelölt elem törlése");
         deleteButton.setOnAction(e -> deleteSelectedTodos());
-
         inputRow = new HBox(10);
+
         inputRow.getChildren().addAll(inputField, addButton);
-
-        bottomPanel = new VBox(5);
+        bottomPanel = new VBox(10, todoListView, inputRow, deleteButton);
         bottomPanel.setPadding(new Insets(10));
-        bottomPanel.getChildren().addAll(inputRow, deleteButton);
 
-        root = new BorderPane();
-        root.setCenter(todoListView);
-        root.setBottom(bottomPanel);
-        return root;
+        return bottomPanel;
     }
 
     private void addTodo() {

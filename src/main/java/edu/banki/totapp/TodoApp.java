@@ -19,8 +19,7 @@ public class TodoApp extends Application {
         stage.setTitle("Todo List");
 
         TodoController todoController = new TodoController();
-
-        BorderPane root = todoController.createPane();
+        VBox root = (VBox) todoController.createPane();
 
         Scene scene = new Scene(root, 400, 300);
         stage.setScene(scene);
