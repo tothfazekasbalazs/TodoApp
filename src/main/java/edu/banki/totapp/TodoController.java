@@ -52,9 +52,6 @@ public class TodoController implements Initializable {
        // bottomPanel = new VBox(10, todoListView, inputRow, deleteButton);
        // bottomPanel.setPadding(new Insets(10));
 
-        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/edu/banki/totapp/todo-view.fxml"));
-        bottomPanel = fxmlloader.load();
-
         return bottomPanel;
     }
 

@@ -3,6 +3,7 @@ package edu.banki.totapp;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -20,10 +21,9 @@ public class TodoApp extends Application {
     public void start(Stage stage) throws IOException {
         stage.setTitle("Todo List");
 
-        TodoController todoController = new TodoController();
-        VBox root = (VBox) todoController.createLayout();
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/edu/banki/totapp/todo-view.fxml"));
 
-        Scene scene = new Scene(root, 400, 300);
+        Scene scene = new Scene(fxmlloader.load(), 400, 300);
         stage.setScene(scene);
         stage.show();
 
